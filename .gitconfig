@@ -1,0 +1,31 @@
+[user]
+	name = Erik Tank
+	email = erik.tank@ticketmaster.com
+[filter "media"]
+	required = true
+	clean = git media clean %f
+	smudge = git media smudge %f
+[core]
+	excludesfile = /Users/erik.tank/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[mergetool "p4merge"]
+  cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
+[push]
+	default = simple
+[alias]
+    alog = log --graph --decorate --all --pretty='format:%h %Cred %ad %Cgreen %cn %d %Creset %s' --color --date=short
+    blog = log --graph --decorate --all --pretty=oneline --abbrev-commit --source
+    clog = log --graph --decorate --all --pretty=oneline --abbrev-commit --color
+    glog = log --graph --all --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short
+    ss = stash save
+    sl = stash list
+    sa = "!sh -c 'git stash apply stash@{$1}' -"
+    sd = "!sh -c 'git stash drop stash@{$1}' -"
