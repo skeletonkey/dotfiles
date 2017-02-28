@@ -1,0 +1,5 @@
+export GO111MODULE=auto
+export GOPATH=$HOME/go
+export GOROOT=$(go env GOROOT)
+
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"

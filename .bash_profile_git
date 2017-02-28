@@ -1,0 +1,7 @@
+alias gs='git status'
+alias gm='git mergetool -t vimdiff'
+#alias gm='git mergetool -t bc3'
+alias gp='git pull --rebase'
+
+source ~/.git-prompt.sh # git shell integration
+source ~/.git-completion.bash # tab complete for git commands/repos

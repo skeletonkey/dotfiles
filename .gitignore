@@ -1,0 +1,6 @@
+.vim/plugged
+.*.sw*
+*~
+.DS_Store
+.idea
+/.vscode/

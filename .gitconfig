@@ -1,31 +1,33 @@
-[user]
-	name = Erik Tank
-	email = erik.tank@ticketmaster.com
-[filter "media"]
-	required = true
-	clean = git media clean %f
-	smudge = git media smudge %f
-[core]
-	excludesfile = /Users/erik.tank/.gitignore_global
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
-[mergetool "p4merge"]
-  cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
-  keepTemporaries = false
-  trustExitCode = false
-  keepBackup = false
-[push]
-	default = simple
 [alias]
+    branches = branch -a --list *feature*
     alog = log --graph --decorate --all --pretty='format:%h %Cred %ad %Cgreen %cn %d %Creset %s' --color --date=short
     blog = log --graph --decorate --all --pretty=oneline --abbrev-commit --source
     clog = log --graph --decorate --all --pretty=oneline --abbrev-commit --color
     glog = log --graph --all --pretty=format:'%C(yellow)%h %C(blue)%ad%C(red)%d %C(reset)%s%C(green) [%cn]' --decorate --date=short
+    graph = log --graph --branches --remotes --tags  --format=format:'%Cgreen%h %Creset• %<(75,trunc)%s (%cN, %cr) %Cred%d' --date-order
     ss = stash save
     sl = stash list
     sa = "!sh -c 'git stash apply stash@{$1}' -"
     sd = "!sh -c 'git stash drop stash@{$1}' -"
+    sp = "!sh -c 'git stash pop stash@{$1}' -"
+	co = checkout
+[core]
+	excludesfile = /home/erik/.gitignore_global
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+[mergetool]
+	prompt = false
+[push]
+	default = simple
+[user]
+	name = Erik Tank
+	email = erik.tank@ticketmaster.com
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
