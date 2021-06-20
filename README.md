@@ -6,7 +6,7 @@ The idea is to clone the repo in a normal place and the symbolically link the
 files that you want to use into your home directory:
 
 ```bash
-ln -s ~/src/tm/Erik.Tank/dotfiles/.bash_profile_git ~/
+ln -s ~/src/github/skeletonkey/dotfiles/.bash_profile ~/
 ```
 
 ## Why all the files????
