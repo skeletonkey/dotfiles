@@ -1,5 +1,5 @@
 [alias]
-    branches = branch -a --list *feature*
+    branches = branch -a --list
     alog = log --graph --decorate --all --pretty='format:%h %Cred %ad %Cgreen %cn %d %Creset %s' --color --date=short
     blog = log --graph --decorate --all --pretty=oneline --abbrev-commit --source
     clog = log --graph --decorate --all --pretty=oneline --abbrev-commit --color
