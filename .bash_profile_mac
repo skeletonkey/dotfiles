@@ -28,4 +28,6 @@ export JAVA_HOME=$JAVA_11
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # require 'z' to be installed: brew install z
-. /usr/local/etc/profile.d/z.sh
+# . /usr/local/etc/profile.d/z.sh
+# require 'z' to be installed: brew install zoxide fzf
+eval "$(zoxide init bash)"
