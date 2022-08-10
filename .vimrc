@@ -66,14 +66,3 @@ map <C-V>      "+gP
 
 " Use CTRL-Q to do what CTRL-V used to do
 noremap <C-Q> <C-V>
-
-" VIM Plugin - vim-plug (https://github.com/junegunn/vim-plug)
-"    Installation follow curl command example on the README page
-"    In Vi run after adding plugins: :PlugInstall to install plugins
-" Plugins can be found here: https://vimawesome.com/
-call plug#begin('~/.vim/plugged')
-Plug 'scrooloose/nerdtree'
-call plug#end()
-
-" nerd nerdtree plugin
-map <C-n> :NERDTreeToggle<CR>

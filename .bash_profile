@@ -1,3 +1,5 @@
+export EDITOR="vi"
+
 alias l=ls
 alias la='ls -lah'
 alias ll='ls -lh'
@@ -22,18 +24,10 @@ else
     export PS1="\[\033[01;00m\]\$(date +%Y-%m-%d) \t \[\033[01;00m\][ \$(pwd) ]\n\[\033[01;32m\]\u \[\033[01;31m\]\$(__git_ps1)\[\033[32m\]\$ \[\033[00m\]"
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # Tell ls to be colourful
 export CLICOLOR=1
 export LS_OPTIONS='--color=auto'
 export LSCOLORS=GxFxCxDxBxegedabagaced
-
-######## BINDINGS ########
-
-# search bash history with up and down arrows
-#bind '"\e[A"':history-search-backward
-#bind '"\e[B"':history-search-forward
 
 ######## SSH AUTO-COMPLETION ########
 
