@@ -24,3 +24,7 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 # . /usr/local/etc/profile.d/z.sh
 # require 'z' to be installed: brew install zoxide fzf
 eval "$(zoxide init bash)"
+
+# https://direnv.net/docs/installation.html
+#  - or - brew install direnv
+eval "$(direnv hook bash)"

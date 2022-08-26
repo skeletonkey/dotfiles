@@ -103,10 +103,6 @@ function ctrl_c() {
     echo -n "^C"
 }
 
-# https://direnv.net/docs/installation.html
-#  - or - brew install direnv
-eval "$(direnv hook bash)"
-
 # load specific/special bash profile files if they are present
 for f in ~/.bash_profile_*
 do
