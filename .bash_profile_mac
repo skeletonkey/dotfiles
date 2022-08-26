@@ -2,6 +2,7 @@ alias clear="printf '\n%.0s' {1..40}; echo .; clear" #clear && clear'
 alias vi=gvim # open MacVim
 
 # Hombrew's sbin
+eval "$(/opt/homebrew/bin/brew shellenv)"
 export PATH="/usr/local/sbin:$PATH"
 
 # iTerm2 stuff
