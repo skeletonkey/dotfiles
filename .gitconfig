@@ -12,10 +12,9 @@
     sp = "!sh -c 'git stash pop stash@{$1}' -"
 	co = checkout
 [core]
+	autocrlf = input
 	excludesFile = ~/.gitignore
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	sshCommand = "ssh -i ~/.ssh/id_ed25519"
 [merge]
 	tool = vimdiff
 	conflictstyle = diff3
@@ -25,14 +24,14 @@
 	default = simple
 [user]
 	name = Erik Tank
-	email = erik.tank@ticketmaster.com
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-[url "ssh://git@git.tmaws.io/"]
-    insteadOf = https://git.tmaws.io/
+	email = erik.tank@pluto.tv
+[url "git@github.com:"]
+	insteadOf = https://github.com/
 [global]
 [init]
 	defaultBranch = main
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
