@@ -17,13 +17,6 @@ function iterm2_print_user_vars() {
 #    . $(brew --prefix)/etc/bash_completion
 #fi
 
-# Java
-export JAVA_8=$(/usr/libexec/java_home -v1.8)
-export JAVA_11=$(/usr/libexec/java_home -v11)
-export JAVA_15=$(/usr/libexec/java_home -v15)
-
-export JAVA_HOME=$JAVA_11
-
 # hide the "zsh is now ..." message
 export BASH_SILENCE_DEPRECATION_WARNING=1
 
