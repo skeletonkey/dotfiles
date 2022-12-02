@@ -10,6 +10,7 @@
     sa = "!sh -c 'git stash apply stash@{$1}' -"
     sd = "!sh -c 'git stash drop stash@{$1}' -"
     sp = "!sh -c 'git stash pop stash@{$1}' -"
+    sshow = "!sh -c 'git stash show -p stash@{$1}' -"
 	co = checkout
 [core]
 	autocrlf = input

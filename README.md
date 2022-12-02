@@ -34,3 +34,12 @@ do
     fi
 done
 ```
+
+## External Dependencies
+
+These are files that I've brought in from other sources.
+
+* [.git-completion.bash](https://github.com/git/git/blob/master/contrib/completion/git-completion.bash)
+Tab completion for Git
+* [.git-prompt.sh](https://github.com/git/git/blob/master/contrib/completion/git-prompt.sh)
+Decorate your prompt when in a directory that is a Git Repo.
