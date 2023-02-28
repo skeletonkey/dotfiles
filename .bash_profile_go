@@ -5,3 +5,5 @@ export GOROOT=$(go env GOROOT)
 [[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
 
 gvm use go1.19
+
+alias gcover="go test -coverprofile=coverage.out && go tool cover -html=coverage.out"
