@@ -1,68 +1,76 @@
-" load without vimrc: vi -u NONE filename
-" reload vimrc: :source $MYVIMRC
-" see what vimrc is being used: :echo $MYVIMRC
+" Vundle
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+" cmds:
+"   :PluginInstall - download and install
+"   :PluginUpdate  - update all active plugins
+"   :PluginClean   - remove plugins that are no longer used
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim' " Vundle itself
+Plugin 'dense-analysis/ale'  	 " synchronous Lint Engine
+Plugin 'fatih/vim-go'            " golang
+Plugin 'frazrepo/vim-rainbow'    " Rainbow brackets
+Plugin 'preservim/nerdtree'      " NerdTree
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'preservim/nerdcommenter' " \ci to toggle comment
+Plugin 'tpope/vim-fugitive'      " git plugin
+Plugin 'mattn/vim-goimports'     " goimports
+call vundle#end()
 
-"set tags=.tags " let it know that ctags output file is actually in .tags
+" Fuzzy Stuff
+map <leader>ff :FufCoverageFile<CR>
 
-filetype plugin indent on " Automatically detect file types
+" NERDTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+"nnoremap <C-t> :NERDTreeToggle<CR> " collides with C-t for ctags
+nnoremap <C-f> :NERDTreeFind<CR>
+" Start NERDTree and put the cursor back in the other window.
+autocmd VimEnter * NERDTree | wincmd p
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
-noremap <F5> :set number!<CR><ESC> " show line numbers
-noremap <F6> :set list!<CR>        " show lineendings
+" vim-rainbow
+let g:rainbow_active=1
+
+" ctags
+autocmd BufWritePost *.go silent! !ctags . &
+
+" vim-go autocomplete
+au filetype go inoremap <buffer> . .<C-x><C-o>
 
 syntax on
 
+" indenting
+set autoindent   " indent at the same level of the pervios line
+set smartindent  " indent according to syntax
+set showmatch    " show matching bracets
+set tabstop=4    " # of spaces that a <Tab> uses
+set shiftwidth=4 " # of spaces used for (auto)indenting
+" set expandtab   " use spaces instead of insterting a \t when <Tab> is used
+
+
+set hidden " Wehn a buffer is brought to foreground, remember undo history and marks
+
+" window/screen
+colorscheme torte
+set colorcolumn=80,100 " mark columns
+set lazyredraw         " Don't redraw when we don't have to
+set noerrorbells       " turn off sound on errors
+set novisualbell       " turn off flashing screen on errors
+set number             " line numbers
+set ruler              " column/line/% status info
+set scrolloff=3        " Start scolling three lines before horizontal border of window
+set sidescrolloff=3    " Start scrolling three columns before vertica border of window
+set title              " show the filename in the window titlebar
+
+" search
+set hlsearch   " highlight mathcing string
 set ignorecase " ignore case
-set smartcase  " unless a capital is typed
-set hlsearch   " highlight matching string
+set incsearch  " search as you type
+set smartcase  " unless a capital is typed search is case insensitive
 :nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR> " clear highlighting with space
-set incsearch  " searches as you type
-set showmatch  " show matching bracets
-set hidden " When a buffer is brought to foreground, remember undo history and marks
-set lazyredraw " Don't redraw when we don't have to
-set scrolloff=3 " Start scrolling three lines before horizontal border of window
-set sidescrolloff=3 " Start scrolling three columns before vertical border of window
-set title " Show the filename in the window titlebar
 
-set noerrorbells " turn off sound on errors
-set novisualbell " turn off that damn flashing screen on errors
-autocmd! GUIEnter * set vb t_vb= " turn of bell in MacVim
-
-set ai " auto indent
-set si " smart indent
-set wildmenu " turn on command line completion
-"set columns=80 " open the window with 80 columns
-"set cindent " this one removes indent when commenting a line ?????
-set smartindent
-set autoindent
-set ruler " show ruler
-
-set tabstop=4 " # of spaces that a <Tab> uses
-set shiftwidth=4 " # of spaces used for (auto)indent
-" set softtabstop=4 " # mixes spaces and tab in insert mode so that things stay lined up
-set expandtab " use spaces instead of inserting \t when <Tab> is used
-
-colorscheme murphy
-if (has("gui_running"))
-	set colorcolumn=80
-    colorscheme morning
-    "highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
-    "set guifont=Bitstream\ Vera\ Sans\ Mono\ 9 " font
-endif
-
-" set K to perldoc -f while on that keyword
-set keywordprg=perldoc\ -f
-
-" CTRL-A = select all
-noremap <C-A> gggH<C-O>G
-
-" CTRL-X = Cut
-vnoremap <C-X> "+x
-
-" CTRL-C = Copy
-vnoremap <C-C> "+y
-
-" CTRL-V = Paste
-map <C-V>      "+gP
-
-" Use CTRL-Q to do what CTRL-V used to do
-noremap <C-Q> <C-V>
