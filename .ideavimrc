@@ -1,5 +1,5 @@
 set ignorecase " ignore case
 set smartcase  " unless a capital is typed
 set hlsearch   " highlight matching string
-:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR> " clear highlighting with space
+:nnoremap <silent> <Space> :nohlsearch<Bar>:echo<CR>
 set incsearch  " searches as you type
