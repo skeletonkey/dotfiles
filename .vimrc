@@ -32,6 +32,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 autocmd VimEnter * NERDTree | wincmd p
 " Exit Vim if NERDTree is the only window remaining in the only tab.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let NERDTreeShowHidden=1 " show hidden files
 
 " vim-rainbow
 let g:rainbow_active=1
