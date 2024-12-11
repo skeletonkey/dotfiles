@@ -1,9 +1,14 @@
+[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
+
+if [[ -f "go.mod" ]]; then
+  go_version=$(grep '^go 1' go.mod | sed 's/^\(go\) *\(.*\)/\1\2/')
+  gvm use "$go_version"
+else
+  gvm use go1.23
+fi
+
 export GO111MODULE=auto
 export GOPATH=$HOME/go
 export GOROOT=$(go env GOROOT)
-
-[[ -s "$HOME/.gvm/scripts/gvm" ]] && source "$HOME/.gvm/scripts/gvm"
-
-gvm use go1.21
 
 alias gcover="go test -coverprofile=coverage.out && go tool cover -html=coverage.out"
